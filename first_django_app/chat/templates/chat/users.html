@@ -1,0 +1,19 @@
+{% extends "master.html" %}
+{% block content %}
+
+<h3>Hallo {{ request.user }} </h3>
+
+<h3>Kontakte</h3> 
+
+
+
+{% for user in users %}
+
+
+<div>
+<a href="{% url 'chat_view' %}?user_id={{ user.id }}">{{user}} </a>
+</div>
+
+{% endfor %}
+
+{% endblock  %}

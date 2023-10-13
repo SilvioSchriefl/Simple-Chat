@@ -1,0 +1,32 @@
+{% extends "master.html" %}
+{% block content %}
+
+{% for message in messages %}
+<div>
+  {{ message.text }}
+{{ message.author }}
+{{ message.reciever }}
+{{ chat.chat_id}}
+{% for user in chat_users %}
+{{ user }}
+{% endfor %}
+</div>
+
+{% endfor %}
+
+
+<form action="{% url 'chat_view' %}?user_id={{ user_id }}" method="post">
+    {% csrf_token %}
+    <input type="hidden" name="chat_id" value="{{ chat.chat_id }}">
+    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+      <input class="mdl-textfield__input" name="text_message" type="text" id="sample3">
+      <label class="mdl-textfield__label" for="sample3">Text...</label>
+    </div>
+    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+      Senden
+    </button>
+  </form>
+
+  <a href="/users">zurück</a>
+
+{% endblock %}

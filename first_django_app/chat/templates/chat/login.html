@@ -1,0 +1,28 @@
+{% extends "master.html" %} {% block content %}
+
+<div class="content_login">
+  <h3>Hallo, bitte logge dich ein</h3>
+  {% if wrongPassword %}
+  <h3>Anmeldedaten falsch</h3>
+  {% endif %}
+
+
+    <form class="input_div" action="/login/" method="post">
+      {% csrf_token %}
+      <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+        <input class="mdl-textfield__input" name="user_name" type="text"  />
+        <label class="mdl-textfield__label" for="sample3">Benutzername</label>
+      </div>
+      <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+        <input class="mdl-textfield__input" name="password" type="password"  />
+        <label class="mdl-textfield__label" for="sample3">Passwort</label>
+      </div>
+      <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+        Login
+      </button>
+    </form>
+
+
+  <div class="register">Neu hier ? <a href="/register/">Regestrieren</a></div>
+</div>
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends "master.html" %}
+{% block content %}
+<h1>Regestrieren</h1>
+
+{% if error %}
+
+Passwort stimmt nicht überein
+
+{% endif %}
+
+<form class="input_div" action="/register/" method="post">
+    {% csrf_token %}
+    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+      <input class="mdl-textfield__input" name="user_name" type="text" id="sample3">
+      <label class="mdl-textfield__label" for="sample3">Benutzername</label>
+    </div>
+    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+      <input class="mdl-textfield__input" name="password1" type="password" id="sample3">
+      <label class="mdl-textfield__label" for="sample3">Passwort</label>
+    </div>
+    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+        <input class="mdl-textfield__input" name="password2" type="password" id="sample3">
+        <label class="mdl-textfield__label" for="sample3">Passwort wiederholen</label>
+      </div>
+    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+      Login
+    </button>
+  </form>
+
+{% endblock %}
+
