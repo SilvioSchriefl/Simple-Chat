@@ -1,4 +1,4 @@
-from datetime import date
+from django.utils import timezone
 import uuid
 from django.conf import settings
 from django.db import models
@@ -12,7 +12,7 @@ class Chat(models.Model):
    
 class Message(models.Model):
     text=models.CharField(max_length=500)
-    created_at = models.DateField(default=date.today)
+    created_at = models.DateTimeField(default=timezone.now)
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='author_message_set')
     reciever = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='reciever_message_set')
     chat = models.ForeignKey(Chat, on_delete=models.CASCADE, related_name='messages')

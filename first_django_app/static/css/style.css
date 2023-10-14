@@ -1,4 +1,9 @@
-.input_div {
+body {
+  margin: 0;
+  height: 100vh;
+  overflow: hidden;
+}
+body .input_div {
   display: flex;
   flex-direction: column;
 }
@@ -43,4 +48,134 @@ header img {
 .register {
   margin-top: 30px;
   font-size: 20px;
+}
+
+.log_out {
+  cursor: pointer;
+}
+.log_out a {
+  font-weight: 700;
+  color: white !important;
+}
+
+.logd_out {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.logd_out a {
+  font-size: 25px;
+  font-weight: 700;
+}
+
+.message_main {
+  transition: max-height 0.5s ease;
+  overflow-y: scroll;
+  padding-right: 19px;
+  width: 100%;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 350px);
+  box-sizing: content-box;
+}
+
+form {
+  margin-bottom: 30px;
+}
+
+.user {
+  transition: 250ms;
+  cursor: pointer;
+  margin-bottom: 10px;
+  padding: 10px 0 10px 0;
+  font-size: 25px;
+  width: 200px;
+  border-radius: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #FF4081;
+}
+.user a {
+  color: black;
+}
+.user:hover {
+  box-shadow: 0px 3px 5px -1px rgba(0, 0, 0, 0.2), 0px 6px 10px 0px rgba(0, 0, 0, 0.14), 0px 1px 18px 0px rgba(0, 0, 0, 0.12);
+  background-color: #FF4081;
+  color: white;
+}
+
+.create_message {
+  z-index: 1;
+  position: absolute;
+  bottom: 0;
+  height: 200px;
+  border-top: 1px solid grey;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0px 3px 5px -1px rgba(0, 0, 0, 0.2), 0px 6px 10px 0px rgba(0, 0, 0, 0.14), 0px 1px 18px 0px rgba(0, 0, 0, 0.12);
+}
+
+.back {
+  position: absolute;
+  right: 50px;
+  top: 200px;
+  font-size: 20px;
+}
+
+.author_message {
+  margin-bottom: 10px;
+  width: max-content;
+  padding: 10px 30px;
+  font-size: 20px;
+  border-radius: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #FF4081;
+  color: white;
+}
+
+.client_message {
+  margin-bottom: 10px;
+  width: max-content;
+  padding: 10px 30px;
+  font-size: 20px;
+  border-radius: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #FF4081;
+  color: #FF4081;
+}
+
+.message_div_client {
+  width: 100%;
+  display: flex;
+  justify-content: right;
+}
+
+.message_div_author {
+  width: 100%;
+  display: flex;
+  justify-content: left;
+}
+
+.date {
+  color: black;
+  font-size: 13px;
+  margin-right: 5px;
+}
+
+.test {
+  position: absolute;
+  top: 150px;
+  left: calc(50% - 300px);
+  width: 600px;
+  height: 100%;
+  overflow: hidden;
 }/*# sourceMappingURL=style.css.map */

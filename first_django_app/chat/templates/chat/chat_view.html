@@ -1,32 +1,49 @@
 {% extends "master.html" %}
 {% block content %}
 
-{% for message in messages %}
-<div>
-  {{ message.text }}
-{{ message.author }}
-{{ message.reciever }}
-{{ chat.chat_id}}
-{% for user in chat_users %}
-{{ user }}
-{% endfor %}
+<div class="test">
+  <div class="message_main" id="message_main">
+    {% for message in messages %}
+    {% if request.user == message.author %}
+    <div class="message_div_author">
+      <div class="author_message" id="message_author">
+        <span class="date">{{ message.created_at }}</span>
+        {{ message.text }}
+      </div>
+    </div>
+    {% endif %}
+
+    {% if not request.user == message.author %}
+    <div class="message_div_client">
+      <div class="client_message" id="message_client">
+        <span class="date">{{ message.created_at }}</span>
+        {{ message.text }}
+      </div>
+    </div>
+    {% endif %}
+    {% endfor %}
+  </div>
 </div>
 
-{% endfor %}
-
-
-<form action="{% url 'chat_view' %}?user_id={{ user_id }}" method="post">
-    {% csrf_token %}
-    <input type="hidden" name="chat_id" value="{{ chat.chat_id }}">
+<div class="create_message">
+  <form onsubmit="sendMessage(); return false " method="post">
+    <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}" id="token">
+    <input type="hidden" name="chat_id" value="{{ chat.chat_id }}" id="chat_id">
+    <input type="hidden" name="create" value="{{ message.created_at }}" id="create">
     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-      <input class="mdl-textfield__input" name="text_message" type="text" id="sample3">
+      <input class="mdl-textfield__input" name="text_message" type="text" id="message">
       <label class="mdl-textfield__label" for="sample3">Text...</label>
     </div>
-    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+    <button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
       Senden
     </button>
   </form>
+</div>
 
-  <a href="/users">zurück</a>
+<a class="back" href="/users">
+  <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored">
+    <i class="material-icons">arrow_back</i>
+  </button>
+</a>
 
 {% endblock %}

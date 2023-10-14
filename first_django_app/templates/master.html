@@ -20,8 +20,11 @@
             <img src="../static/assets/img/speech-bubble-5-48.ico" alt="">
             <span>What's Up</span>
         </div>
-
-        <span>Log out</span>
+        {% if request.user.is_authenticated %}
+        <div class="log_out">
+        <a href="/logout">Log out</a>
+        </div>
+        {% endif %}
     </header>
 
     {% block content %}

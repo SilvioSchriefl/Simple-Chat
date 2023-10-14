@@ -1,19 +1,17 @@
-{% extends "master.html" %}
-{% block content %}
+{% extends "master.html" %} {% block content %}
 
-<h3>Hallo {{ request.user }} </h3>
+<div class="content_login">
+  <h3>Hallo {{ request.user }} !!</h3>
 
-<h3>Kontakte</h3> 
+  <h3>Mit wem möchtest du eine Unterhltung beginnen?</h3>
 
+  {% for user in users %}
 
+  <a href="{% url 'chat_view' %}?user_id={{ user.id }}">
+    <div class="user">{{user}}</div>
+  </a>
 
-{% for user in users %}
-
-
-<div>
-<a href="{% url 'chat_view' %}?user_id={{ user.id }}">{{user}} </a>
+  {% endfor %}
 </div>
 
-{% endfor %}
-
-{% endblock  %}
+{% endblock %}
