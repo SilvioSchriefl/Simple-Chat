@@ -31,19 +31,16 @@
     <input type="hidden" name="chat_id" value="{{ chat.chat_id }}" id="chat_id">
     <input type="hidden" name="create" value="{{ message.created_at }}" id="create">
     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-      <input class="mdl-textfield__input" name="text_message" type="text" id="message">
+      <input class="mdl-textfield__input" name="text_message" type="text" id="message" maxlength="150">
       <label class="mdl-textfield__label" for="sample3">Text...</label>
     </div>
     <button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
       Senden
     </button>
   </form>
+  <a style="font-size: 20px;" href="/users">zurück</a>
 </div>
 
-<a class="back" href="/users">
-  <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored">
-    <i class="material-icons">arrow_back</i>
-  </button>
-</a>
+
 
 {% endblock %}

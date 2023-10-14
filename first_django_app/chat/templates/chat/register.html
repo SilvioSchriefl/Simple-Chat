@@ -2,7 +2,7 @@
 {% block content %}
 
 <div class="content_login">
-<h1>Regestrieren</h1>
+<h3>Regestrieren</h3>
 
 {% if error %}
 
@@ -21,14 +21,14 @@ Passwort stimmt nicht überein
       <label class="mdl-textfield__label" for="sample3">Passwort</label>
     </div>
     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-        <input class="mdl-textfield__input" name="password2" type="password" id="sample3">
+        <input class="mdl-textfield__input" name="password2" type="password">
         <label class="mdl-textfield__label" for="sample3">Passwort wiederholen</label>
       </div>
     <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
       Senden
     </button>
   </form>
-  <a href="/login">zurück</a>
+  <a style="font-size: 20px;" href="/login">zurück</a>
 </div>
 
 

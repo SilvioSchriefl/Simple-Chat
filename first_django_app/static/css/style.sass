@@ -38,6 +38,8 @@ header
     display: flex
     align-items: center
     justify-content: center
+    h3
+        font-size: 30px
 
 .register
     margin-top: 30px
@@ -92,6 +94,7 @@ form
         color: white
 
 .create_message
+    flex-direction: column
     z-index: 1
     position: absolute
     bottom: 0
@@ -110,26 +113,26 @@ form
     font-size: 20px
 
 .author_message
+    flex-direction: column
     margin-bottom: 10px
-    width: max-content
     padding: 10px 30px
     font-size: 20px
     border-radius: 50px
     display: flex
     justify-content: center
-    align-items: center
+    align-items: left
     background-color: #FF4081
     color: white
 
 .client_message
+    flex-direction: column
     margin-bottom: 10px
-    width: max-content
     padding: 10px 30px
     font-size: 20px
     border-radius: 50px
     display: flex
     justify-content: center
-    align-items: center
+    align-items: left
     border: 1px solid #FF4081
     color: #FF4081
 
@@ -144,6 +147,8 @@ form
     justify-content: left
 
 .date
+    min-width: fit-content
+    width: max-content
     color: black
     font-size: 13px
     margin-right: 5px
@@ -155,3 +160,43 @@ form
     width: 600px
     height: 100%
     overflow: hidden
+
+
+
+@media only screen and  (max-width: 800px) 
+
+        h3
+            font-size: 20px
+
+        header
+            font-size: 22px
+            img
+                height: 50px
+                width: 50px
+        
+        .content_login
+            text-align: center
+
+@media only screen and  (max-width: 700px)
+
+    .test
+        width: 500px 
+        left: calc(50% - 250px)
+
+@media only screen and  (max-width: 530px)
+
+    .mdl-textfield
+        width: 200px
+
+    .test
+        width: 400px 
+        left: calc(50% - 200px)
+
+@media only screen and  (max-width: 450px)
+
+    .test
+        width: 300px 
+        left: calc(50% - 150px)
+
+
+
