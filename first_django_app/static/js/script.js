@@ -1,28 +1,30 @@
 
 
 async function sendMessage() {
-    
-    renderClientMessage(message.value);
-    let url = new URL(window.location.href);
-    let userId = url.searchParams.get("user_id");
-    userId = parseInt(userId, 10);
-    let form = new FormData();
-    form.append('text_message', message.value);
-    form.append('chat_id', chat_id.value);
-    form.append('csrfmiddlewaretoken', token.value)
-    try {
-       let response = await fetch(`/chat_view/?user_id=${userId}`, {
-            method: 'POST',
-            body: form
-        })  
-        let json_response = await response.json();
-        document.getElementById('client_messsage').remove()
-        renderBackendMessage(json_response)
-    } catch (error) {
-        console.log('Error sending message');
+    if (message.value.length > 0) {
+        console.log(message.value.length);
+        renderClientMessage(message.value);
+        let url = new URL(window.location.href);
+        let userId = url.searchParams.get("user_id");
+        userId = parseInt(userId, 10);
+        let form = new FormData();
+        form.append('text_message', message.value);
+        form.append('chat_id', chat_id.value);
+        form.append('csrfmiddlewaretoken', token.value)
+        try {
+            let response = await fetch(`/chat_view/?user_id=${userId}`, {
+                method: 'POST',
+                body: form
+            })
+            let json_response = await response.json();
+            document.getElementById('client_messsage').remove()
+            renderBackendMessage(json_response)
+        } catch (error) {
+            console.log('Error sending message');
+        }
+        message.value = '';
+        scrollDown();
     }
-    message.value = '';
-    scrollDown();
 }
 
 
@@ -41,7 +43,6 @@ function renderClientMessage(message) {
 
 
 function renderBackendMessage(message) {
-    console.log(message);
     let div = document.getElementById('message_main')
     div.innerHTML += `  <div class="author_message" id="backend_messsage">
                             <span class="date"> ${message.created_at}</span>

@@ -56,20 +56,18 @@ def chat_view(request):
     
     if request.method == 'POST':
         text_message = request.POST.get('text_message')
-        if text_message.strip():
-            chat_id = request.POST.get('chat_id', None)
-            chat = get_object_or_404(Chat, chat_id=chat_id)
-            new_message = Message.objects.create(author=request.user, reciever=user, text=text_message, chat=chat)
-            new_message.save()
-            serialized_message = {
-                "author": current_user.username,
-                "receiver": user.username,
-                "text": new_message.text,
-                "created_at": new_message.created_at.strftime("%Y-%m-%d %H:%M:%S")
-            }
-            return JsonResponse(serialized_message)
-    
-    
+        chat_id = request.POST.get('chat_id', None)
+        chat = get_object_or_404(Chat, chat_id=chat_id)
+        new_message = Message.objects.create(author=request.user, reciever=user, text=text_message, chat=chat)
+        new_message.save()
+        serialized_message = {
+            "author": current_user.username,
+            "receiver": user.username,
+            "text": new_message.text,
+            "created_at": new_message.created_at.strftime("%Y-%m-%d %H:%M:%S")
+        }
+        return JsonResponse(serialized_message)
+     
     if not chat_exists:
         chat = Chat.objects.create(chat_id=uuid.uuid4())
         chat.users.add(request.user, user)
