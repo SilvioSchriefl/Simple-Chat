@@ -3,7 +3,6 @@
 async function sendMessage() {
     if (message.value.length > 0) {
         console.log(message.value.length);
-        renderClientMessage(message.value);
         let url = new URL(window.location.href);
         let userId = url.searchParams.get("user_id");
         userId = parseInt(userId, 10);
@@ -31,14 +30,6 @@ async function sendMessage() {
 function scrollDown() {
     let scrollingDiv = document.getElementById("message_main");
     scrollingDiv.scrollTop = scrollingDiv.scrollHeight;
-    scrollingDiv.scrollTop = scrollingDiv.scrollHeight;
-
-}
-
-
-function renderClientMessage(message) {
-    let div = document.getElementById('message_main')
-    div.innerHTML += `<span id="client_messsage">${message}</span>`;
 }
 
 
