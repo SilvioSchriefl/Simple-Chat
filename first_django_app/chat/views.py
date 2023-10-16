@@ -28,13 +28,19 @@ def register(request):
         username = request.POST['user_name']
         password1 = request.POST['password1']
         password2 = request.POST['password2']
-
+        existing_user = User.objects.filter(username=username).first()
+        
+        if existing_user:
+            return render(request, 'chat/register.html', {'user_already_exist': True})
+            
+        
         if password1 == password2:
             user = User.objects.create_user(username=username, password=password1)
             login(request, user)
             return redirect('/login/')  # Navigiere zur Startseite nach der Registrierung
+        
         else:
-            return render(request, 'chat/register.html', {'error': True})
+            return render(request, 'chat/register.html', {'pw_not_match': True})
     return render(request, 'chat/register.html')
 
 def contacts(request):
@@ -47,6 +53,7 @@ def chat_view(request):
     user_id = request.GET.get('user_id', None)
     current_user = request.user
     user = get_object_or_404(User, id=user_id)
+    chat_exists = Chat.objects.filter(users=current_user).filter(users=user).exists()
     
     if request.method == 'POST':
         text_message = request.POST.get('text_message')
@@ -63,7 +70,7 @@ def chat_view(request):
             }
             return JsonResponse(serialized_message)
     
-    chat_exists = Chat.objects.filter(users=current_user).filter(users=user).exists()
+    
     if not chat_exists:
         chat = Chat.objects.create(chat_id=uuid.uuid4())
         chat.users.add(request.user, user)

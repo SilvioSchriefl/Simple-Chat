@@ -4,9 +4,15 @@
 <div class="content_login">
 <h3>Regestrieren</h3>
 
-{% if error %}
+{% if pw_not_match %}
 
-Passwort stimmt nicht überein
+Passwort stimmt nicht überein.
+
+{% endif %}
+
+{% if user_already_exist %}
+
+Benutzername bereits vergeben.
 
 {% endif %}
 
