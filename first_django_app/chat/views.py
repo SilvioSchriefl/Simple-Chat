@@ -31,10 +31,9 @@ def register(request):
         existing_user = User.objects.filter(username=username).first()
         
         if existing_user:
-            return render(request, 'chat/register.html', {'user_already_exist': True})
-            
+            return render(request, 'chat/register.html', {'user_already_exist': True}) 
         
-        if password1 == password2:
+        elif password1 == password2:
             user = User.objects.create_user(username=username, password=password1)
             login(request, user)
             return redirect('/login/')  # Navigiere zur Startseite nach der Registrierung
